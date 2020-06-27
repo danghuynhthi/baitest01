@@ -1,0 +1,56 @@
+CASE SO_GMA IS
+	WHEN X"0" => SSEG <= "1000000";
+	WHEN X"1" => SSEG <= "1111001";
+	WHEN X"2" => SSEG <= "0100100";
+	WHEN X"3" => SSEG <= "0110000";
+	WHEN X"4" => SSEG <= "0011001";
+	WHEN X"5" => SSEG <= "0010010";
+	WHEN X"6" => SSEG <= "0000010";
+	WHEN X"7" => SSEG <= "1111000";
+	WHEN X"8" => SSEG <= "0000000";
+	WHEN X"9" => SSEG <= "0010000";
+	WHEN X"A" => SSEG <= "0001000";
+	WHEN X"B" => SSEG <= "0000011";
+	WHEN X"C" => SSEG <= "1000110";
+	WHEN X"D" => SSEG <= "0100001";
+	WHEN X"E" => SSEG <= "0000110";
+   WHEN OTHERS =>SSEG <= "0001110";
+
+
+////////UNSIGNED INT8 LED7DQ[8]={0XC0,0XF9,0XA4,0XB0,0X99,0X92,0X82,0XF8};
+
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+
+
+
+
+IF reset='1' then
+	r_reg <= (others => '0');
+elsif (clk'event and clk='1) then  r_reg <= r_next;
+******************
+PROCESS( RST,CKHT)
+BEGIN 
+IF (RST='1') then NN_R<= '0';
+ELSIF RISING_EDGE(CKHT) THEN NN_R <= NN_N;
+END IF;
+END PROCESS;
+
+/////////////////////////chong doi nut nhan 
+int1 ktnn(int1 pin)
+  { if(input(pin)==0)
+	{  delay_ms(20};
+		if(input(pin)==0)
+	      {
+	      while (input(pin)==0)
+                   return 1;
+                  }
+          }
+      return 0;
+}
+
